@@ -1,3 +1,11 @@
+## Project goals
+
+This project will easy to fork, hook up and reuse blog app, with both blog and cms part to handle data. 
+
+Next boilerplate bellow 
+___
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
