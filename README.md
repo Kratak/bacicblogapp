@@ -4,6 +4,10 @@ This project will easy to fork, hook up and reuse blog app, with both blog and c
 
 Here will be using vercel BE.
 
+You need to create:
+- vercel project nad link with github repo
+- vercel postgress db, link with project, add .env, install postgress package
+
 Next boilerplate bellow 
 ___
 
