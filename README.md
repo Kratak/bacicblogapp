@@ -2,6 +2,8 @@
 
 This project will easy to fork, hook up and reuse blog app, with both blog and cms part to handle data. 
 
+Here will be using vercel BE.
+
 Next boilerplate bellow 
 ___
 
