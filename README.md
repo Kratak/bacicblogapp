@@ -8,6 +8,21 @@ You need to create:
 - vercel project nad link with github repo
 - vercel postgress db, link with project, add .env, install postgress package
 
+
+Create vercel postgress db articles table
+
+CREATE TABLE articles (
+article_id BIGSERIAL,
+is_public BOOLEAN NOT NULL,
+craete_date timestamptz DEFAULT NOW(),
+publish_date timestamptz NULL,
+edit_date timestamptz NULL,
+custom_url text NOT NULL,
+article_title text NOT NULL,
+article_wyswig text NOT NULL,
+article_short_description text NOT NULL
+);
+
 Next boilerplate bellow 
 ___
 

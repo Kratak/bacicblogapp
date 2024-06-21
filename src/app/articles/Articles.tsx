@@ -19,10 +19,10 @@ async function getArticlesDescription(): Promise<Array<ArticleResponse>> {
 }
 
 const ArticlesList = async () => {
-    return <div>Brak Artykułów</div>
     //todo make handler
     const articles = await getArticlesDescription()
     if (articles?.length === 0) {
+        return <div>Brak Artykułów</div>
     }
     return (<div>{articles.map(article => {
         if (!article.is_public) {
