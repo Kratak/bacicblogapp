@@ -23,6 +23,25 @@ article_wyswig text NOT NULL,
 article_short_description text NOT NULL
 );
 
+Example query to add article 
+
+INSERT INTO articles(
+is_public,
+publish_date,
+edit_date,
+custom_url,
+article_title,
+article_wyswig,
+article_short_description)
+VALUES (
+true,
+'2024-06-21T19:56:00+0000',
+'2024-06-21T19:56:00+0000',
+'custom_url',
+'article_title',
+'article_wyswig',
+'article_short_description');
+
 Next boilerplate bellow 
 ___
 
