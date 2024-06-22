@@ -11,7 +11,7 @@ interface ArticleResponse {
 
 async function getArticlesDescription(): Promise<Array<ArticleResponse>> {
     const {rows}: QueryResult<ArticleResponse> = await sql`
-        SELECT is_public, article_id, publish_date, custom_url, article_title, article_short_description 
+        SELECT * 
         FROM articles 
         ORDER BY publish_date DESC;`;
     return rows
