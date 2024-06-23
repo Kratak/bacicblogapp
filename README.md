@@ -10,6 +10,7 @@ You need to create:
 
 
 Create vercel postgress db articles table
+
 ```sql
 CREATE TABLE articles (
 article_id BIGSERIAL,
@@ -26,6 +27,7 @@ article_short_description text NOT NULL
 
 Create vercel postgress db articles users
 
+```sql
 CREATE TABLE users (
 user_id BIGSERIAL,
 is_valid BOOLEAN NOT NULL,
@@ -35,6 +37,7 @@ user_name text NOT NULL,
 user_role text NOT NULL,
 pass_hash text NOT NULL
 )
+```
 
 Create vercel postgress db articles sesions
 ```sql
@@ -49,6 +52,7 @@ valid_date timestamptz NULL
 
 
 Example query to add article 
+
 ```sql
 INSERT INTO articles(
 is_public,
