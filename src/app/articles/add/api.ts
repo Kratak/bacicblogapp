@@ -1,9 +1,9 @@
 "use server"
 
 import {sql} from "@vercel/postgres";
-import {FormData} from "@/app/articles/add/layout";
+import {AddPostFormData} from "@/app/articles/add/layout";
 
-export async function postArticle (data: FormData) {
+export async function postArticle (data: AddPostFormData) {
     await sql`
                     INSERT INTO articles(
                             is_public,

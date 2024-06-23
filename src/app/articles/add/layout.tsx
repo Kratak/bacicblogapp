@@ -5,7 +5,7 @@ import {postArticle} from "@/app/articles/add/api";
 
 const inter = Inter({subsets: ['latin']})
 
-export interface FormData {
+export interface AddPostFormData {
     is_public: boolean
     craete_date: string;
     edit_date: string;
@@ -23,16 +23,13 @@ const currentPickerDate =new Intl.DateTimeFormat("pl", {
     day: "2-digit",
 }).format().split(".").reverse().join("-")
 
-export default function ArticleLayout({params: {article: articleUrl}}: {
-    children: React.ReactNode,
-    params: { article: string }
-}) {
+export default function AddArticleLayout() {
     const {
         handleSubmit,
         register,
-    } = useForm<FormData>();
+    } = useForm<AddPostFormData>();
 
-    async function onSubmit(data: FormData) {
+    async function onSubmit(data: AddPostFormData) {
         await postArticle(data)
     }
     return (
