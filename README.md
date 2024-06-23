@@ -10,7 +10,7 @@ You need to create:
 
 
 Create vercel postgress db articles table
-
+```sql
 CREATE TABLE articles (
 article_id BIGSERIAL,
 is_public BOOLEAN NOT NULL,
@@ -22,9 +22,34 @@ article_title text NOT NULL,
 article_wyswig text NOT NULL,
 article_short_description text NOT NULL
 );
+```
+
+Create vercel postgress db articles users
+
+CREATE TABLE users (
+user_id BIGSERIAL,
+is_valid BOOLEAN NOT NULL,
+craete_date timestamptz DEFAULT NOW(),
+edit_date timestamptz NULL,
+user_name text NOT NULL,
+user_role text NOT NULL,
+pass_hash text NOT NULL
+)
+
+Create vercel postgress db articles sesions
+```sql
+CREATE TABLE sesions (
+user_id text NOT NULL,
+is_valid BOOLEAN NOT NULL,
+sesion_id text NOT NULL,
+craete_date timestamptz DEFAULT NOW(),
+valid_date timestamptz NULL
+)
+```
+
 
 Example query to add article 
-
+```sql
 INSERT INTO articles(
 is_public,
 publish_date,
@@ -41,6 +66,7 @@ true,
 'article_title',
 'article_wyswig',
 'article_short_description');
+```
 
 Next boilerplate bellow 
 ___
