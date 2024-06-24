@@ -5,6 +5,6 @@ import {LoginFormData} from "@/app/login/layout";
 
 export async function login (data: LoginFormData) {
 
-    cookies().set('session','test')
+    cookies().set('sessionid','test')
     console.log('cookie set')
 }
