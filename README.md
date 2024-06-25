@@ -25,7 +25,7 @@ article_short_description text NOT NULL
 );
 ```
 
-Create vercel postgress db articles users
+Create vercel postgress db  users
 
 ```sql
 CREATE TABLE users (
@@ -39,7 +39,26 @@ pass_hash text NOT NULL
 )
 ```
 
-Create vercel postgress db articles sesions
+Create vercel postgress db articles users
+
+```sql
+INSERT INTO users(
+is_valid,
+edit_date,
+user_name,
+user_role,
+pass_hash)
+VALUES (
+true,
+'2024-06-21T19:56:00+0000',
+'editor',
+'editor',
+'passhash');
+)
+```
+
+Example query to add user
+
 ```sql
 CREATE TABLE sesions (
 user_id text NOT NULL,
@@ -49,7 +68,6 @@ craete_date timestamptz DEFAULT NOW(),
 valid_date timestamptz NULL
 )
 ```
-
 
 Example query to add article 
 
