@@ -6,28 +6,34 @@ import {QueryResult, sql} from "@vercel/postgres";
 
 
 interface UsersResponse {
-    is_public: boolean,
-    article_id: number,
-    custom_url: string,
-    article_title: string,
-    publish_date: Date,
-    article_short_description: string
+    user_id: string;
+    is_valid: boolean;
+    craete_date: string;
+    edit_date: string;
+    user_name: string;
+    user_role: string;
+    pass_hash: string;
 }
 
-async function getArticlesDescription(): Promise<Array<ArticleResponse>> {
-    const {rows}: QueryResult<ArticleResponse> = await sql`
+
+async function getArticlesDescription({ email, password }: LoginFormData): Promise<Array<UsersResponse>> {
+    const { rows }: QueryResult<UsersResponse> = await sql`
         SELECT * 
-        FROM articles 
-        ORDER BY publish_date DESC;`;
+        FROM users 
+        WHERE (user_name = ${email} AND pass_hash = ${password});
+        `;
     return rows
 
 }
 export async function login (data: LoginFormData) {
     try {
-
+        const credentials = await getArticlesDescription(data)
+        if (!!credentials.length) {
+            cookies().set('sessionid','test')
+        } else {
+            // todo wrong credentials handling
+        }
     } catch (e){
         console.log('Login error', e)
     }
-    cookies().set('sessionid','test')
-    console.log('cookie set')
 }
