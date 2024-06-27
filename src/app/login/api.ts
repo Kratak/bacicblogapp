@@ -14,9 +14,12 @@ interface UsersResponse {
     user_role: string;
     pass_hash: string;
 }
+interface GetSessionIdData {
+    user_id: string;
+}
 
 
-async function getArticlesDescription({ email, password }: LoginFormData): Promise<Array<UsersResponse>> {
+async function getLoginCredentials({ email, password }: LoginFormData): Promise<Array<UsersResponse>> {
     const { rows }: QueryResult<UsersResponse> = await sql`
         SELECT * 
         FROM users 
@@ -25,9 +28,14 @@ async function getArticlesDescription({ email, password }: LoginFormData): Promi
     return rows
 
 }
+async function getSessionId({ user_id }: GetSessionIdData): Promise<Array<UsersResponse>> {
+    const { rows }: QueryResult<UsersResponse> = await sql` INSERT INTO session( user_id )VALUES ( ${user_id});`;
+    return rows
+
+}
 export async function login (data: LoginFormData) {
     try {
-        const credentials = await getArticlesDescription(data)
+        const credentials = await getLoginCredentials(data)
         if (!!credentials.length) {
             cookies().set('sessionid','test')
         } else {
