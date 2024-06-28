@@ -16,6 +16,8 @@ interface UsersResponse {
 }
 interface GetSessionIdData {
     user_id: string;
+    email: string;
+    password: string
 }
 
 
@@ -28,8 +30,17 @@ async function getLoginCredentials({ email, password }: LoginFormData): Promise<
     return rows
 
 }
-async function getSessionId({ user_id }: GetSessionIdData): Promise<Array<UsersResponse>> {
-    const { rows }: QueryResult<UsersResponse> = await sql` INSERT INTO session( user_id )VALUES ( ${user_id});`;
+async function getSessionId({ user_id, email, password }: GetSessionIdData): Promise<Array<UsersResponse>> {
+    const { rows }: QueryResult<UsersResponse> = await sql` 
+        INSERT INTO session( user_id )VALUES ( ${user_id})
+        SELECT * from session WHERE ( user_id = ${user_id})
+        WHERE NOT EXIST ( 
+            SELECT * 
+            FROM users 
+            WHERE (user_name = ${email} AND pass_hash = ${password}) 
+            )
+        ;
+    `;
     return rows
 
 }
